@@ -53,3 +53,13 @@ The scheduler has been enhanced with several features to improve usability and e
 - Basic conflict detection identifies tasks scheduled at the same time and provides warnings.
 
 These improvements make the system more practical and closer to a real-world pet care scheduling application.
+
+## Testing PawPal+
+
+To run the automated test suite, use the following command:
+
+```bash
+python -m pytest
+---
+
+
