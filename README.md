@@ -63,3 +63,15 @@ python -m pytest
 ---
 
 
+## Features
+
+- Task Scheduling: Create and manage tasks for pets.
+- Sorting by Time: Tasks are automatically sorted in chronological order.
+- Filtering: View tasks by pet or by completion status (pending/completed).
+- Recurring Tasks: Daily and weekly tasks automatically generate the next occurrence when completed.
+- Conflict Detection: The system detects tasks scheduled at the same time and provides warnings.
+- Scheduler View: Displays tasks for the day in an organized and readable format.
+
+## 📸 Demo
+
+<img src="assets/pawpal_app.png" width="600"/>
