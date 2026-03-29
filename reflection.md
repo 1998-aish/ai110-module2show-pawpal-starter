@@ -75,13 +75,28 @@ These refinements helped me better understand how to separate responsibilities a
 
 **a. Constraints and priorities**
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+The scheduler considers several basic constraints to organize tasks effectively.
+
+First, time is the primary constraint. Tasks are scheduled and sorted based on their assigned time so that the user can clearly see the order of activities throughout the day.
+
+Second, completion status is considered. The system allows filtering of tasks based on whether they are completed or pending, helping the user focus on what still needs to be done.
+
+Third, pet-specific grouping is supported. Tasks are associated with individual pets, allowing the user to view and manage tasks for each pet separately.
+
+In terms of priorities, time was given the highest importance because scheduling is fundamentally about organizing tasks in a time-based order. Other factors like priority levels (low, medium, high) are captured in the data but are not yet actively used in decision-making.
+
+The design focuses on simplicity and clarity, ensuring that tasks are easy to view, manage, and understand for the user.
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+
+One tradeoff in my scheduler design is how task conflicts are detected.
+
+Currently, the system only checks for exact time matches between tasks. This means it will detect conflicts only when two tasks are scheduled at the exact same time, but it does not account for overlapping durations (for example, a 30-minute task overlapping with another task starting within that time window).
+
+This approach keeps the implementation simple and easy to understand, but it limits the accuracy of conflict detection in more realistic scenarios.
+
+Additionally, while a more optimized approach using a dictionary can improve performance, I chose to keep a simpler loop-based implementation for readability and clarity at this stage.
 
 ---
 
