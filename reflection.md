@@ -104,40 +104,66 @@ Additionally, while a more optimized approach using a dictionary can improve per
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+I used VS Code Copilot throughout the project to assist with different stages of development. It was most helpful during the design and implementation phases, especially for generating class structures, writing methods, and creating test cases.
+
+Copilot Chat helped me brainstorm ideas for improving the scheduler, such as adding sorting, filtering, recurring tasks, and conflict detection. The inline suggestions were also useful for writing clean Python code quickly, particularly when working with list comprehensions and datetime logic.
+
+Using separate chat sessions for different phases (design, implementation, testing) helped me stay organized and focused. It allowed me to clearly separate concerns and avoid mixing ideas from different stages of the project.
+
 
 **b. Judgment and verification**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+Although Copilot was very helpful, I did not blindly accept all suggestions. For example, during conflict detection, Copilot suggested returning formatted strings, but I chose to return Task objects instead. This made the design more flexible and aligned better with the rest of my system.
+
+I also reviewed and tested all generated code to ensure it worked correctly with my existing implementation. In some cases, I simplified AI-generated code to improve readability and maintain consistency.
+
+Through this process, I learned that while AI can accelerate development, it is important to act as the "lead architect" by making final decisions about design, structure, and tradeoffs. AI is a powerful assistant, but the responsibility for building a clean and logical system remains with the developer.
 
 ---
 
 ## 4. Testing and Verification
 
 **a. What you tested**
+I tested both normal functionality (happy paths) and edge cases of the scheduler system.
 
-- What behaviors did you test?
-- Why were these tests important?
+### Happy Paths
+- Tasks are correctly sorted in ascending order based on time.
+- Filtering by pet returns only the selected pet’s tasks.
+- Filtering by status returns only completed or pending tasks as expected.
+- Completing a daily or weekly task correctly generates a new task with the next occurrence.
+- Conflict detection correctly identifies tasks scheduled at the same time.
+
+### Edge Cases
+- A pet with no tasks returns an empty list without errors.
+- Tasks added out of order are still sorted correctly.
+- Two tasks scheduled at the exact same time are detected as a conflict.
+- Filtering for a non-existent pet returns an empty result.
+- Completing a one-time task does not generate a new task.
 
 **b. Confidence**
 
-- How confident are you that your scheduler works correctly?
-- What edge cases would you test next if you had more time?
+I am fairly confident that the scheduler works correctly for its core functionality. The automated tests verify key behaviors such as sorting tasks by time, filtering by pet and status, handling recurring tasks, and detecting conflicts when tasks occur at the same time.
+
+However, there are still some edge cases that could be explored further. For example, I would like to test overlapping task durations rather than just exact time matches, as well as more complex recurrence patterns such as monthly schedules.
+
+Additionally, I would test scenarios involving multiple pets with a large number of tasks to ensure the system performs efficiently and remains accurate under heavier usage.
 
 ---
 
 ## 5. Reflection
 
-**a. What went well**
+### a. What went well
 
-- What part of this project are you most satisfied with?
+The part I am most satisfied with is how the overall system came together from design to implementation. I was able to successfully translate the UML diagram into working Python classes and then connect that logic to the Streamlit UI. Features like sorting tasks, handling recurring tasks, and detecting conflicts worked as expected and made the application feel more realistic and complete.
 
-**b. What you would improve**
+---
 
-- If you had another iteration, what would you improve or redesign?
+### b. What you would improve
 
-**c. Key takeaway**
+If I had another iteration, I would improve the scheduling logic to handle more complex scenarios such as overlapping task durations instead of only exact time matches. I would also enhance the user interface by allowing users to manage multiple pets more interactively and edit or delete tasks. Additionally, I would expand test coverage to include more edge cases and improve the overall robustness of the system.
 
-- What is one important thing you learned about designing systems or working with AI on this project?
+---
+
+### c. Key takeaway
+
+One important thing I learned is that designing a system requires careful planning and decision-making, especially when working with AI tools. While AI can generate useful suggestions and speed up development, it is important to think critically and make intentional design choices. Acting as the "lead architect" helped me ensure that the system remained clean, consistent, and aligned with the project goals.
